@@ -53,7 +53,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('article.show', ["details" => $article]);
     }
 
     /**
@@ -61,7 +61,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('article.edit', ["details" => $article]);
     }
 
     /**
@@ -69,7 +69,10 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
-        //
+        $article->title = $request->title;
+        $article->description = $request->description;
+        $article->update();
+        return redirect()->route('article.index');
     }
 
     /**
@@ -77,6 +80,7 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        return redirect()->back();
     }
 }

@@ -22,7 +22,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::resource('article', ArticleController::class);
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/user-list', [HomeController::class, 'users'])->name('users');
 });

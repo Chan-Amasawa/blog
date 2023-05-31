@@ -1,16 +1,19 @@
-@extends('layouts.app');
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <h3>Article List</h3>
+                <div>
+                    <a href="{{ route('article.create') }}" class="btn btn-outline-secondary">Create</a>
+                </div>
                 <table class="table">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Title</th>
-                            <th>Description</th>
+                            <th>Owner</th>
                             <th>Control</th>
                             <th>Created_at</th>
                             <th>Updated_at</th>
@@ -20,8 +23,14 @@
                         @forelse ($articles as $article)
                             <tr>
                                 <td>{{ $article->id }}</td>
-                                <td>{{ Str::limit($article->title, 10, '...') }}</td>
-                                <td>{{ Str::limit($article->description, 20, '...') }}</td>
+                                <td>
+                                    {{ Str::limit($article->title, 20, '...') }}
+                                    <br>
+                                    <span class="small text-black-50">
+                                        {{ Str::limit($article->description, 20, '...') }}
+                                    </span>
+                                </td>
+                                <td>{{ $article->user_id }}</td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{ route('article.show', $article->id) }}"
