@@ -40,6 +40,15 @@
                                         </i>{{ $user->updated_at->format('d M Y') }}</p>
                                 </td>
                             </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class=" text-center">
+                                    <p>
+                                        There is no record
+                                    </p>
+
+                                </td>
+                            </tr>
                         @endforelse
                     </tbody>
                 </table>
