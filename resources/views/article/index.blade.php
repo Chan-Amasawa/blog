@@ -66,7 +66,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="3" class="text-center m-5 p-3">
+                                <td colspan="6" class="text-center m-5 p-3">
                                     <p>There is no record</p>
                                     <a href="{{ route('article.create') }}" class="btn btn-sm btn-primary">Create
                                         Article</a>

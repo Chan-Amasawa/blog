@@ -40,14 +40,6 @@
                                         </i>{{ $user->updated_at->format('d M Y') }}</p>
                                 </td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="3" class="text-center m-5 p-3">
-                                    <p>There is no record</p>
-                                    <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">Create
-                                        User</a>
-                                </td>
-                            </tr>
                         @endforelse
                     </tbody>
                 </table>
