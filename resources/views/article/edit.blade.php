@@ -4,13 +4,13 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form action="{{ route('article.update', $details->id) }}" method="post" class="my-3">
+                <form action="{{ route('article.update', $article->id) }}" method="post" class="my-3">
                     @method('put')
                     @csrf
                     <h3>Edit Article</h3>
                     <div class="my-3">
                         <label for="title">Article Title</label>
-                        <input id="title" type="text" value="{{ $details->title }}"
+                        <input id="title" type="text" value="{{ old('title', $article->title) }}"
                             class="form-control
                         @error('title') is-invalid @enderror"
                             name="title">
@@ -25,7 +25,7 @@
                         <label for="description">Description</label>
                         <textarea name="description" id="description" rows="7"
                             class="form-control
-                        @error('description') is-invalid @enderror">{{ $details->description }}</textarea>
+                        @error('description') is-invalid @enderror">{{ old('description', $article->description) }}</textarea>
                         @error('description')
                             <div class="invalid-feedback">
                                 {{ $message }}
