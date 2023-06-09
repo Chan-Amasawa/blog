@@ -32,11 +32,11 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        $categories = Category::create([
+        Category::create([
             'title' => $request->title,
             'user_id' => Auth::id()
-        ])->latest()->get();
-        return view('category.index');
+        ]);
+        return redirect()->route('category.index');
     }
 
     /**
@@ -72,6 +72,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('category.index');
+        return redirect()->back();
     }
 }
