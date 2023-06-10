@@ -11,6 +11,9 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ $article->title }}</h5>
+                        <div class="">
+                            <span class="badge bg-secondary">{{ $article->category_id }}</span>
+                        </div>
                         <p class="card-text small">{{ $article->description }}</p>
                         <p class="card-text m-0 text-black-50 small">Created At - {{ $article->created_at }}</p>
                         <p class="card-text text-black-50 small">Updated At - {{ $article->updated_at }}</p>

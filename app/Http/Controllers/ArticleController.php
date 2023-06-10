@@ -43,6 +43,7 @@ class ArticleController extends Controller
         Article::create([
             "title" => $request->title,
             "description" => $request->description,
+            "category_id" => $request->category,
             "user_id" => Auth::id()
         ]);
 
@@ -72,7 +73,8 @@ class ArticleController extends Controller
     {
         $article->update([
             "title" => $request->title,
-            "description" => $request->description
+            "description" => $request->description,
+            "category_id" => $request->category
         ]);
 
         return redirect()->route('article.index');

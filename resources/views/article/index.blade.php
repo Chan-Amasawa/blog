@@ -12,7 +12,8 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Title</th>
+                            <th>Article</th>
+                            <th>Category</th>
                             <th>Owner</th>
                             <th>Control</th>
                             <th>Created_at</th>
@@ -29,6 +30,9 @@
                                     <span class="small text-black-50">
                                         {{ Str::limit($article->description, 20, '...') }}
                                     </span>
+                                </td>
+                                <td>
+                                    {{ $article->category_id }}
                                 </td>
                                 <td>{{ $article->user_id }}</td>
                                 <td>
