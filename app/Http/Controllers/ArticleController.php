@@ -21,7 +21,8 @@ class ArticleController extends Controller
         })->when(request()->has('title'), function ($query) {
             $sortType = request()->title ?? "asc";
             $query->orderBy("title", $sortType);
-        })->paginate(7)->withQueryString();
+        })->latest('id')
+            ->paginate(7)->withQueryString();
 
         return view('article.index', compact('articles'));
     }
