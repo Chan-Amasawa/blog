@@ -18,13 +18,14 @@
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
                 @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('category.create') }}">Create Category</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('category.index') }}">Category List</a>
-                    </li>
-
+                    @can('viewAny', App\Models\Category::class)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('category.create') }}">Create Category</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('category.index') }}">Category List</a>
+                        </li>
+                    @endcan
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('article.create') }}">Create Article</a>
                     </li>
