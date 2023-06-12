@@ -6,6 +6,7 @@ use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ArticleController extends Controller
 {
@@ -63,6 +64,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+        Gate::authorize('article-update', $article);
         return view('article.edit', compact('article'));
     }
 
@@ -71,13 +73,14 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
+        Gate::authorize('article-update', $article);
         $article->update([
             "title" => $request->title,
             "description" => $request->description,
             "category_id" => $request->category
         ]);
 
-        return redirect()->route('article.index');
+        return redirect()->route('article.index')->with('message', $article->title . 'updated');
     }
 
     /**
@@ -85,6 +88,7 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
+        Gate::authorize('article-delete', $article);
         $article->delete();
         return redirect()->back();
     }

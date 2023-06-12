@@ -41,13 +41,27 @@
                                             class="btn btn-sm btn-outline-secondary">
                                             <i class="bi bi-info"></i>
                                         </a>
-                                        <a href="{{ route('article.edit', $article->id) }}"
-                                            class="btn btn-sm btn-outline-secondary">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button form="form{{ $article->id }}" class="btn btn-sm btn-outline-secondary">
-                                            <i class="bi bi-trash3"></i>
-                                        </button>
+                                        @can('article-update', $article)
+                                            <a href="{{ route('article.edit', $article->id) }}"
+                                                class="btn btn-sm btn-outline-secondary">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                        @endcan
+                                        @cannot('article-update', $article)
+                                            <button disabled class="btn btn-sm btn-outline-secondary">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                        @endcannot
+                                        @can('article-delete', $article)
+                                            <button form="form{{ $article->id }}" class="btn btn-sm btn-outline-secondary">
+                                                <i class="bi bi-trash3"></i>
+                                            </button>
+                                        @endcan
+                                        @cannot('article-update', $article)
+                                            <button disabled class="btn btn-sm btn-outline-secondary">
+                                                <i class="bi bi-trash3"></i>
+                                            </button>
+                                        @endcannot
                                     </div>
                                     <form id="form{{ $article->id }}" class="d-inline-block"
                                         action="{{ route('article.destroy', $article->id) }}" method="post">
