@@ -19,7 +19,8 @@ class UserSeeder extends Seeder
         User::factory()->create([
             "name" => "Chan",
             "email" => 'chan@gmail.com',
-            "password" => Hash::make('11111111')
+            "password" => Hash::make('11111111'),
+            "role" => 'admin'
         ]);
     }
 }

@@ -28,17 +28,21 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('article-update', function (User $user, Article $article) {
-            return $user->id === $article->user_id ? Response::allow() : Response::deny('You are not allowed');
-        });
-        Gate::define('article-delete', function (User $user, Article $article) {
-            return $user->id === $article->user_id;
-        });
-        Gate::before(function (User $user) {
-            $admins = [1, 2, 3];
-            if (in_array($user->id, $admins)) {
-                return true;
-            }
+        // Gate::define('article-update', function (User $user, Article $article) {
+        //     return $user->id === $article->user_id ? Response::allow() : Response::deny('You are not allowed');
+        // });
+        // Gate::define('article-delete', function (User $user, Article $article) {
+        //     return $user->id === $article->user_id;
+        // });
+        // Gate::before(function (User $user) {
+        //     $admins = [1, 2, 3];
+        //     if (in_array($user->id, $admins)) {
+        //         return true;
+        //     }
+        // });
+
+        Gate::define('show-users-list', function (User $user) {
+            return $user->role === 'admin';
         });
     }
 }

@@ -41,23 +41,23 @@
                                             class="btn btn-sm btn-outline-secondary">
                                             <i class="bi bi-info"></i>
                                         </a>
-                                        @can('article-update', $article)
+                                        @can('update', $article)
                                             <a href="{{ route('article.edit', $article->id) }}"
                                                 class="btn btn-sm btn-outline-secondary">
                                                 <i class="bi bi-pencil"></i>
                                             </a>
                                         @endcan
-                                        @cannot('article-update', $article)
+                                        @cannot('update', $article)
                                             <button disabled class="btn btn-sm btn-outline-secondary">
                                                 <i class="bi bi-pencil"></i>
                                             </button>
                                         @endcannot
-                                        @can('article-delete', $article)
+                                        @can('delete', $article)
                                             <button form="form{{ $article->id }}" class="btn btn-sm btn-outline-secondary">
                                                 <i class="bi bi-trash3"></i>
                                             </button>
                                         @endcan
-                                        @cannot('article-update', $article)
+                                        @cannot('update', $article)
                                             <button disabled class="btn btn-sm btn-outline-secondary">
                                                 <i class="bi bi-trash3"></i>
                                             </button>

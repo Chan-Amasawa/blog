@@ -11,9 +11,16 @@ class CategoryPolicy
     /**
      * Determine whether the user can view any models.
      */
+    public function before(User $user)
+    {
+        if ($user->role === 'admin') {
+            return true;
+        }
+    }
+
     public function viewAny(User $user): bool
     {
-        //
+        return $user->role === 'admin';
     }
 
     /**
@@ -21,7 +28,7 @@ class CategoryPolicy
      */
     public function view(User $user, Category $category): bool
     {
-        //
+        return $user->role === 'admin';
     }
 
     /**
@@ -29,7 +36,7 @@ class CategoryPolicy
      */
     public function create(User $user): bool
     {
-        return $user->id === 1;
+        return $user->role === 'admin';
     }
 
     /**
@@ -37,7 +44,7 @@ class CategoryPolicy
      */
     public function update(User $user, Category $category): bool
     {
-        return $user->id === $category->user_id;
+        return $user->role === 'admin';
     }
 
     /**
@@ -45,13 +52,13 @@ class CategoryPolicy
      */
     public function delete(User $user, Category $category): bool
     {
-        //
+        return $user->role === 'admin';
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Category $category): bool
+    public function restore(User $user, Category $category)
     {
         //
     }
@@ -59,7 +66,7 @@ class CategoryPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Category $category): bool
+    public function forceDelete(User $user, Category $category)
     {
         //
     }

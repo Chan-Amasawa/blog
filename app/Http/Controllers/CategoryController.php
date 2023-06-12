@@ -16,6 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Category::class);
         $categories = Category::latest('id')->get();
         return view('category.index', compact('categories'));
     }
@@ -34,6 +35,7 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
+        $this->authorize('create', Category::class);
         Category::create([
             'title' => $request->title,
             'user_id' => Auth::id()
@@ -54,6 +56,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        $this->authorize('update', Category::class);
         return view('category.edit', compact('category'));
     }
 
@@ -62,6 +65,7 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
+        $this->authorize('update', Category::class);
         if ($request->user()->cannot('update', $category)) {
             return abort(401);
         };
@@ -77,6 +81,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $this->authorize('delete', Category::class);
         $category->delete();
         return redirect()->back();
     }

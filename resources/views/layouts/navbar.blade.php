@@ -31,9 +31,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('article.index') }}">Article List</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('users') }}">User List</a>
-                    </li>
+                    @can('show-users-list')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('users') }}">User List</a>
+                        </li>
+                    @endcan
+
+
                 @endauth
                 @guest
                     @if (Route::has('login'))
