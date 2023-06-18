@@ -17,7 +17,6 @@
                         {{ __('You are logged in!') }} <i class="bi bi-person"></i>
                     </div>
                 </div>
-                {{ Auth::user() }}
             </div>
         </div>
     </div>

@@ -11,12 +11,12 @@ class CategoryPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function before(User $user)
-    {
-        if ($user->role === 'admin') {
-            return true;
-        }
-    }
+    // public function before(User $user)
+    // {
+    //     if ($user->role === 'admin') {
+    //         return true;
+    //     }
+    // }
 
     public function viewAny(User $user): bool
     {
@@ -44,7 +44,7 @@ class CategoryPolicy
      */
     public function update(User $user, Category $category): bool
     {
-        return $user->role === 'admin';
+        return $user->id = $category->user_id;
     }
 
     /**
@@ -52,7 +52,7 @@ class CategoryPolicy
      */
     public function delete(User $user, Category $category): bool
     {
-        return $user->role === 'admin';
+        return $user->id = $category->user_id;
     }
 
     /**

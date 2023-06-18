@@ -33,13 +33,17 @@
                                 <td>{{ $category->user_id }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('category.edit', $category->id) }}"
-                                            class="btn btn-sm btn-outline-secondary">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button form="form{{ $category->id }}" class="btn btn-sm btn-outline-secondary">
-                                            <i class="bi bi-trash3"></i>
-                                        </button>
+                                        @can('update', $category)
+                                            <a href="{{ route('category.edit', $category->id) }}"
+                                                class="btn btn-sm btn-outline-secondary">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                        @endcan
+                                        @can('delete', $category)
+                                            <button form="form{{ $category->id }}" class="btn btn-sm btn-outline-secondary">
+                                                <i class="bi bi-trash3"></i>
+                                            </button>
+                                        @endcan
                                     </div>
                                     <form id="form{{ $category->id }}" class="d-inline-block"
                                         action="{{ route('category.destroy', $category->id) }}" method="post">
