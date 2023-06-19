@@ -14,7 +14,9 @@
                             <th>#</th>
                             <th>Article</th>
                             <th>Category</th>
-                            <th>Owner</th>
+                            @can('admin-only')
+                                <th>Owner</th>
+                            @endcan
                             <th>Control</th>
                             <th>Created_at</th>
                             <th>Updated_at</th>
@@ -34,7 +36,9 @@
                                 <td>
                                     {{ $article->category_id }}
                                 </td>
-                                <td>{{ $article->user_id }}</td>
+                                @can('admin-only')
+                                    <td>{{ $article->user_id }}</td>
+                                @endcan
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{ route('article.show', $article->id) }}"

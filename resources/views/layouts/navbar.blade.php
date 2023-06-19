@@ -32,7 +32,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('article.index') }}">Article List</a>
                     </li>
-                    @can('show-users-list')
+                    @can('admin-only')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('users') }}">User List</a>
                         </li>

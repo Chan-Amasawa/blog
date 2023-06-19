@@ -43,8 +43,10 @@ class AuthServiceProvider extends ServiceProvider
         //     }
         // });
 
-        Gate::define('show-users-list', function (User $user) {
-            return $user->role === 'admin';
-        });
+        // Gate::define('show-users-list', function (User $user) {
+        //     return $user->role === 'admin';
+        // });
+
+        Gate::define('admin-only', fn (User $user) => $user->role === 'admin');
     }
 }

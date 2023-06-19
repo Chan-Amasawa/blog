@@ -19,10 +19,13 @@ class ArticleController extends Controller
             $keyword = request()->keyword;
             $query->where('title', "like", "%" . $keyword . "%");
             $query->orWhere('description', "like", "%" . $keyword . "%");
-        })->when(request()->has('title'), function ($query) {
-            $sortType = request()->title ?? "asc";
-            $query->orderBy("title", $sortType);
-        })->latest('id')
+        })->when(Auth::user()->role === 'user', function ($query) {
+            $query->where('user_id', Auth::id());
+        })
+            ->when(request()->has('title'), function ($query) {
+                $sortType = request()->title ?? "asc";
+                $query->orderBy("title", $sortType);
+            })->latest('id')
             ->paginate(7)->withQueryString();
 
         return view('article.index', compact('articles'));
