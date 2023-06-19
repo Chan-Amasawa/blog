@@ -11,6 +11,8 @@
                             <th>#</th>
                             <th>Information</th>
                             <th>Control</th>
+                            <th>Categroy Count</th>
+                            <th>Article Count</th>
                             <th>Created_at</th>
                             <th>Updated_at</th>
                         </tr>
@@ -26,6 +28,11 @@
                                         {{ Str::limit($user->email, 20, '...') }}
                                     </span>
                                 </td>
+                                <td></td>
+                                <td class="text-center">
+                                    {{ $user->categories->count() }}
+                                </td>
+                                <td class=" text-center">{{ $user->articles->count() }}</td>
                                 <td>{{ $user->user_id }}</td>
                                 <td>
                                     <p class="mb-1 small"><i class="bi bi-clock"></i>

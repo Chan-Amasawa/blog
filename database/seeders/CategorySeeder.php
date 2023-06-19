@@ -14,7 +14,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = ['local news', 'international news', 'sports', 'clothes'];
+        $categories = ['local news', 'international news', 'sports', 'clothes', 'travels'];
         $arr = [];
         foreach ($categories as $category) {
             $arr[] = [

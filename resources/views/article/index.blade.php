@@ -34,10 +34,11 @@
                                     </span>
                                 </td>
                                 <td>
-                                    {{ $article->category_id }}
+                                    {{ $article->category->title }}
                                 </td>
+                                <td></td>
                                 @can('admin-only')
-                                    <td>{{ $article->user_id }}</td>
+                                    <td>{{ $article->user->name }}</td>
                                 @endcan
                                 <td>
                                     <div class="btn-group">
