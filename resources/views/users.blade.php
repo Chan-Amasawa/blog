@@ -33,7 +33,6 @@
                                     {{ $user->categories->count() }}
                                 </td>
                                 <td class=" text-center">{{ $user->articles->count() }}</td>
-                                <td>{{ $user->user_id }}</td>
                                 <td>
                                     <p class="mb-1 small"><i class="bi bi-clock"></i>
                                         {{ $user->created_at->format('h:m a') }}</p>
@@ -49,7 +48,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class=" text-center">
+                                <td colspan="" class=" text-center">
                                     <p>
                                         There is no record
                                     </p>

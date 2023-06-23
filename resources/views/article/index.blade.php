@@ -36,7 +36,6 @@
                                 <td>
                                     {{ $article->category->title }}
                                 </td>
-                                <td></td>
                                 @can('admin-only')
                                     <td>{{ $article->user->name }}</td>
                                 @endcan
